@@ -1,0 +1,16 @@
+# ===== Node / Next.js =====
+node_modules/
+.next/
+out/
+dist/
+
+# Next.js build artifacts
+.next/
+.vercel/
+
+# ===== Python / FastAPI =====
+venv/
+env/
+
+
+
