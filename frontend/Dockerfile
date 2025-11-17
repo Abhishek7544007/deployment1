@@ -1,23 +1,22 @@
-# Step 1 — Base image
-FROM node:18-alpine AS builder
+# Step 1 — Builder image (Node 20+)
+FROM node:20-alpine AS builder
 
 WORKDIR /app
 
-# Install deps
 COPY package*.json ./
 RUN npm install
 
-# Copy project files
 COPY . .
 
-# Build Next.js app
 RUN npm run build
 
-# Step 2 — Production image
-FROM node:18-alpine AS runner
+
+# Step 2 — Production runner
+FROM node:20-alpine AS runner
+
 WORKDIR /app
 
-# Copy only the necessary output
+# Copy built application
 COPY --from=builder /app/.next ./.next
 COPY --from=builder /app/public ./public
 COPY --from=builder /app/package*.json ./
