@@ -2,7 +2,7 @@
 
 export default function Home() {
   async function pingApi() {
-    const res = await fetch("https://deployment1-69f5.onrender.com/ping");
+    const res = await fetch("https://deployment1-backend.onrender.com/ping");
     const data = await res.json();
     alert(data.message);
   }
